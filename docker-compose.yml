@@ -1,0 +1,17 @@
+# Postgres only — backend and frontend run via npm (see README) so you can
+# iterate on them without a rebuild loop. Add them here later if you want
+# a fully containerized deploy.
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env next to this file (not committed)}
+      POSTGRES_DB: ip2p
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - ip2p_pg_data:/var/lib/postgresql/data
+volumes:
+  ip2p_pg_data:

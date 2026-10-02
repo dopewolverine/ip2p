@@ -1,0 +1,50 @@
+{
+  "name": "ip2p-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').cpSync('src/db/migrations','dist/src/db/migrations',{recursive:true})\"",
+    "start": "node dist/src/server.js",
+    "migrate": "ts-node src/db/migrate.ts",
+    "migrate:prod": "node dist/src/db/migrate.js",
+    "generate-discovery-pages": "ts-node scripts/generateDiscoveryPages.ts",
+    "compute-vendor-stats": "ts-node scripts/computeVendorStats.ts",
+    "rotate-app-enc-key": "ts-node scripts/rotateAppEncKey.ts",
+    "insert-platform-key": "ts-node scripts/insertPlatformKey.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "pg": "^8.12.0",
+    "zod": "^3.23.8",
+    "cookie-parser": "^1.4.6",
+    "@noble/hashes": "^1.4.0",
+    "otplib": "^12.0.1",
+    "nodemailer": "^6.9.14",
+    "ethers": "^6.13.2",
+    "bitcoinjs-lib": "^6.1.6",
+    "ws": "^8.18.0",
+    "tronweb": "^5.3.2",
+    "bip32": "^4.0.0",
+    "@bitcoinerlab/secp256k1": "^1.1.1",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.9",
+    "@types/pg": "^8.11.6",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/nodemailer": "^6.4.15",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.3",
+    "@types/ws": "^8.5.12",
+    "@types/multer": "^1.4.11"
+  }
+}

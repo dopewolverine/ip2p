@@ -1,0 +1,1 @@
+GRANT SELECT, INSERT, UPDATE, DELETE ON transactions TO ip2p_app;
